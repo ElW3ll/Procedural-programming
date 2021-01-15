@@ -1,0 +1,26 @@
+algorithm algo
+var
+sentenceSTRING = 'ndi tkl ptxo.';
+lenghtINTEGER=0
+iINTEGER=0
+spacesINTEGER=0
+vowelsINTEGER=0
+
+begin
+
+WHILE (setence[i] not '.') DO 
+
+IF(setence[i]==' ') THEN 
+   spaces=spaces+1;
+   i=i+1;
+   break;
+END_IF
+lenght=lenght+1
+IF (setence[i]==('A' OR 'a' OR 'E' OR 'e' OR 'i' OR 'I' OR 'o' OR 'O' OR 'u' OR'U')) THEN vowels=vowels+1;
+END_IF
+i=i+1;
+END_WHILE
+write(lenght)
+write(space+1)
+write(vowels)
+end.

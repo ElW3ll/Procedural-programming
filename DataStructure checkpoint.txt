@@ -1,0 +1,136 @@
+ALGORITHM problem1 array
+
+VAR
+somme:INTEGER:=0
+tab : set1[5];
+tab : set2[8];
+boolean : case
+i,j : INTEGER;
+BEGIN
+set1 := {1,2,3,5,7}; 
+set2 := {1,2,3,5,7,2,8,3};
+for i from 0 to 4 do
+  case=false
+  for j from 0 to 7 do
+     if (set1[i]==set2[j]) then
+         case=true;
+         break;
+     end if
+   end for
+   if (case==false) then
+       somme=somme+set1[i];
+end for
+
+for i from 0 to 7 do
+  case=false;
+  for j from 0 to 4 do
+     if (set2[i]==set1[j]) then
+         case=true;
+         break;
+     end if
+   end for
+   if (case==false) then
+       somme=somme+set2[i];
+end for
+write(somme);
+End
+
+ALGORITHM problem1 hachtable
+
+VAR
+somme:INTEGER:=0
+tab : set1[5];
+tab : set2[8];
+i,count: INTEGER;
+BEGIN
+set1 := {1,2,3,5,7}; 
+set2 := {1,2,3,5,7,2,8,3};
+htab : HASH_TABLE<INTEGER,INTEGER>;
+for i from 0 to 7 do
+   if(htab.lookup(set2[i])==true) then 
+        count := htab.get(set2[i]);
+        htab.insert(set2[i],count+1);
+   else
+        htab.insert(str[i],1);
+   end if
+end for
+
+for i from 0 to 4 do
+   if(htab.lookup(set1[i])==true) then 
+        count := htab.get(set1[i]);
+        htab.insert(set1[i],count+1);
+   else
+        htab.insert(set1[i],1);
+   end if
+end for
+FOR i FROM 0 TO 7  DO
+   IF (htab.get(set2[i])== 1) THEN
+       htab.insert(set2[i],0)
+       somme=somme+set2[i];
+       END_IF
+END FOR
+FOR i FROM 0 TO 4  DO
+   IF (htab.get(set1[i])== 1) THEN
+       htab.insert(set1[i],0)
+       somme=somme+set1[i]
+       END_IF
+END_FOR
+write(somme)
+END
+
+ALGORITHM problem2 array
+
+VAR
+somme:INTEGER:=0
+tab : set1[5];
+tab : set2[8];
+
+BEGIN
+set1 := {1,2,3,5,7}; 
+set2 := {1,2,3,5,7,2,8,3};
+for i from 0 to 4 do
+  for j from 0 to 7 do
+     if (set1[i]==set2[j]) then
+         somme=somme+set1[i];
+         break;
+     end if
+   end for
+end for
+write(somme)
+END
+
+ALGORITHM problem2 hashtable
+
+VAR
+somme:INTEGER:=0
+tab : set1[5];
+tab : set2[8];
+i,count: INTEGER;
+BEGIN
+set1 := {1,2,3,5,7}; 
+set2 := {1,2,3,5,7,2,8,3};
+htab : HASH_TABLE<INTEGER,INTEGER>;
+for i from 0 to 7 do
+   if(htab.lookup(set2[i])==true) then 
+        count := htab.get(set2[i]);
+        htab.insert(set2[i],count+1);
+   else
+        htab.insert(str[i],1);
+   end if
+end for
+
+for i from 0 to 4 do
+   if(htab.lookup(set1[i])==true) then 
+        count := htab.get(set1[i]);
+        htab.insert(set1[i],count+1);
+   else
+        htab.insert(set1[i],1);
+   end if
+end for
+FOR i FROM 0 TO 4  DO
+   IF (htab.get(set1[i])> 1) THEN
+       somme=somme+set1[i]
+       END_IF
+END_FOR
+write(somme)
+END
